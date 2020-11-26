@@ -1,3 +1,4 @@
+# -- encoding: utf-8 --
 while True:
     print("")
     print("")
