@@ -18,7 +18,7 @@ while True:
             if l == '':
                 pass
             else:
-                l1 = l.replace('Nama : ','').replace('Nim : ','').replace('Tugas : ','').replace('UTS : ','').replace('UAS : ','')
+                l1 = l.replace('Nama Bahan : ','').replace('Kode : ','').replace('Jumlah : ','').replace('Harga : ','').replace('Total : ','')
                 nama,kode,jumlah,harga,total = l1.strip().split('|')
                 P((' ║ ')+(nama[:15]).ljust(17,'.')+('║ ')+(kode).ljust(17)+('║ ')+(jumlah)+(' Kg').ljust(6)+('║ ')+(harga).ljust(8)+('║ ')+(total).ljust(6)+('║ '))
         P(" ╚══════════════════╩══════════════════╩══════════╩═════════╩═══════╝")
@@ -30,7 +30,7 @@ while True:
             if l == '':
                 pass
             else:
-                l1 = l.replace('Nama : ','').replace('Nim : ','').replace('Tugas : ','').replace('UTS : ','').replace('UAS : ','').replace('Akhir : ','')
+                l1 = l.replace('Nama Bahan : ','').replace('Kode : ','').replace('Jumlah : ','').replace('Harga : ','').replace('Total : ','')
                 nama,kode,jumlah,harga,total = l1.strip().split('|')
                 if int(kode) == int(target):
                     P('BERHASIL MENGHAPUS Data %s'%(target))
@@ -56,7 +56,7 @@ while True:
             if l == '':
                 pass
             else:
-                l1 = l.replace('Nama : ','').replace('Nim : ','').replace('Tugas : ','').replace('UTS : ','').replace('UAS : ','').replace('Akhir : ','')
+                l1 = l.replace('Nama Bahan : ','').replace('Kode : ','').replace('Jumlah : ','').replace('Harga : ','').replace('Total : ','')
                 na,ni,tu,uts,uas,akhir = l1.strip().split('|')
                 if na == target:
                     P(' Mengedit Data %s'%(target))
@@ -94,7 +94,7 @@ while True:
                         else:
                             break
                     total = jumlah * harga
-                    edit  =('\nNama : '+nama+'|Nim : '+str(kode)+'|Tugas : '+str(jumlah)+'|UTS : '+str(harga)+'|UAS : '+str(total)+'\n')
+                    edit  =('\nNama Bahan : '+nama+'|Kode : '+str(kode)+'|Jumlah : '+str(jumlah)+'|Harga : '+str(harga)+'|Total : '+str(total)+'\n')
                     nm.append(edit+'\n')
                 else:      
                     nm.append(str(l)+'\n')
@@ -146,7 +146,7 @@ while True:
             else:
                 break
         total = jumlah * harga
-        i.write('\nNama : '+nama+'|Nim : '+str(kode)+'|Tugas : '+str(jumlah)+'|UTS : '+str(harga)+'|UAS : '+str(total)+'\n')
+        i.write('\nNama Bahan : '+nama+'|Kode : '+str(kode)+'|Jumlah : '+str(jumlah)+'|Harga : '+str(harga)+'|Total : '+str(total)+'\n')
         i.close()
         Oc("clear")
     else:
