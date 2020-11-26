@@ -49,29 +49,23 @@ while True:
         new2.close()
     elif menu == 3:
         u = open('database.txt','r').read().splitlines()
-        target = input(' Masukan Nama : ')
+        print("")
+        target = int(input(' Masukan Kode : '))
         nm = []
         for l in u:
             if l == '':
                 pass
             else:
                 l1 = l.replace('Nama Bahan : ','').replace('Kode : ','').replace('Jumlah : ','').replace('Harga : ','').replace('Total : ','')
-                na,ni,tu,uts,uas,akhir = l1.strip().split('|')
-                if na == target:
+                nama,kode,jumlah,harga,total = l1.strip().split('|')
+                if int(kode) == int(target):
+                    print("")
                     print(' Mengedit Data %s'%(target))
+                    print("")
                     while (True):
                         nama = input(" Nama Bahan: ")
                         if nama == '':
                             print(' Masukan Nama Bahan')
-                        else:
-                            break
-                    while (True):
-                        try:
-                            kode  = int(input(" Kode Bahan  : "))
-                            if kode == '':
-                                print(' Masukan Kode dengan Angka')
-                        except ValueError:
-                            print(' Masukan Kode dengan Angka')                
                         else:
                             break
                     while (True):
