@@ -1,67 +1,153 @@
-bahan = []
-jumlah = []
-harga = []
- 
-def tampil_bahan():
-   if len(bahan) <= 0:
-       print ("BAHAN KOSONG")
-   else:
-       print("ID     Nama Bahan     Jumlah Bahan     Harga Bahan")
-       print("--------------------------------------------------------")
-       for i in range(len(bahan)):
-           print(i+1,"    ",bahan[i],"         ",jumlah[i],"          ",harga[i])
- 
- 
-def tambah_bahan():
-   nama_bahan = input("Nama Bahan: ")
-   bahan.append(nama_bahan)
-   jumlah_bahan = input("Jumlah Bahan: ")
-   jumlah.append(jumlah_bahan)
-   harga_bahan = input("Harga Bahan: ")
-   harga.append(harga_bahan)
- 
-def ubah_bahan():
-   tampil_bahan()
-   i = int(input("Inputkan ID bahan: "))
-   if(i>len(bahan)):
-       print ("Bahan tidak ditemukan")
-   else:
-       nama_bahan = input("Nama Bahan: ")
-       bahan[i] = nama_bahan
- 
-def hapus_bahan():
-   tampil_bahan()
-   i = int(input("Inputkan ID buku: "))
-   if(i>len(bahan)):
-       print("ID Salah")
-   else:
-       bahan.remove(bahan[i])
-       jumlah.remove(jumlah[i])
-       harga.remove(harga[i])
- 
-def tampil_menu():
-   print("\n")
-   print("-------MENU-------".center(55))
-   print("")
-   print("[1]Tampil    [2]Tambah   [3]Ubah    [4]Hapus   [5]Keluar")
-   print("")
- 
-   menu = int(input("PILIH MENU: "))
-   print("\n")
- 
-   if menu == 1:
-       tampil_bahan()
-   elif menu == 2:
-       tambah_bahan()
-   elif menu == 3:
-       ubah_bahan()
-   elif menu == 4:
-       hapus_bahan()
-   elif menu == 5:
-       exit()
-   else:
-       print ("Salah Pilih")
- 
-if __name__=="__main__":
-   while(True):
-       tampil_menu()
+import os,sys
+P = print
+Oc = os.system
+while True:
+    P("")
+    P("")
+    c = input("A)dd, E)dit, D)elete, S)earch, L)ist, Q)uit: ")
+    if c.lower() == 'q':
+        break
+    elif c.lower() == 'l':
+        i = open('database.txt','r').read().splitlines()
+        P(" ╔══════════════════════════════════════════════════════════════════╗")
+        P(" ╠═══════════════════════════   LIST BAHAN   ═══════════════════════╣")
+        P(" ╠══════════════════╦══════════════════╦══════════╦═════════╦═══════╣")
+        P(" ║      NAMA        ║    KODE BAHAN    ║  JUMLAH  ║  HARGA  ║ TOTAL ║")
+        P(" ╠══════════════════╬══════════════════╬══════════╬═════════╬═══════╣")
+        for l in i:
+            if l == '':
+                pass
+            else:
+                l1 = l.replace('Nama : ','').replace('Nim : ','').replace('Tugas : ','').replace('UTS : ','').replace('UAS : ','')
+                nama,kode,jumlah,harga,total = l1.strip().split('|')
+                P((' ║ ')+(nama[:15]).ljust(17,'.')+('║ ')+(kode).ljust(17)+('║ ')+(jumlah)+(' Kg').ljust(6)+('║ ')+(harga).ljust(8)+('║ ')+(total).ljust(6)+('║ '))
+        P(" ╚══════════════════╩══════════════════╩══════════╩═════════╩═══════╝")
+    elif c.lower() == 'd':
+        u = open('database.txt','r').read().splitlines()
+        target = int(input(' Masukan Kode : '))
+        nm = []
+        for l in u:
+            if l == '':
+                pass
+            else:
+                l1 = l.replace('Nama : ','').replace('Nim : ','').replace('Tugas : ','').replace('UTS : ','').replace('UAS : ','').replace('Akhir : ','')
+                nama,kode,jumlah,harga,total = l1.strip().split('|')
+                if int(kode) == int(target):
+                    P('BERHASIL MENGHAPUS Data %s'%(target))
+                    pass
+                else:      
+                    nm.append(str(l)+'\n')
+        new = open('database.txt','w')        
+        new.write(str(nm))
+        new.close()
+        new = open('database.txt','r').read().splitlines()
+        new1 = open('database.txt','w')
+        new1.close()
+        new2 = open('database.txt','a')
+        for i in new:
+            i2 = i.replace("'","").replace("\\n', '", "\n").replace("'","").replace("\\n",'')
+            new2.write(i2)
+        new2.close()
+    elif c.lower() == 'e':
+        u = open('database.txt','r').read().splitlines()
+        target = input(' Masukan Nama : ')
+        nm = []
+        for l in u:
+            if l == '':
+                pass
+            else:
+                l1 = l.replace('Nama : ','').replace('Nim : ','').replace('Tugas : ','').replace('UTS : ','').replace('UAS : ','').replace('Akhir : ','')
+                na,ni,tu,uts,uas,akhir = l1.strip().split('|')
+                if na == target:
+                    P(' Mengedit Data %s'%(target))
+                    while (True):
+                        nama = input(" Nama Bahan: ")
+                        if nama == '':
+                            P(' Masukan Nama Bahan')
+                        else:
+                            break
+                    while (True):
+                        try:
+                            kode  = int(input(" Kode Bahan  : "))
+                            if kode == '':
+                                P(' Masukan Kode dengan Angka')
+                        except ValueError:
+                            P(' Masukan Kode dengan Angka')                
+                        else:
+                            break
+                    while (True):
+                        try:
+                            jumlah  = int(input(" Jumlah (Kg): "))
+                            if jumlah == '':
+                                P(' Masukan Jumlah dengan Angka')
+                        except ValueError:
+                            P(' Masukan Jumlah dengan Angka')                
+                        else:
+                            break
+                    while (True):
+                        try:
+                            harga  = int(input(" Harga per Kg: "))
+                            if harga == '':
+                                P(' Masukan Harga dengan Angka')
+                        except ValueError:
+                            P(' Masukan Harga dengan Angka')                
+                        else:
+                            break
+                    total = jumlah * harga
+                    edit  =('\nNama : '+nama+'|Nim : '+str(kode)+'|Tugas : '+str(jumlah)+'|UTS : '+str(harga)+'|UAS : '+str(total)+'\n')
+                    nm.append(edit+'\n')
+                else:      
+                    nm.append(str(l)+'\n')
+        new = open('database.txt','w')        
+        new.write(str(nm))
+        new.close()
+        new = open('database.txt','r').read().splitlines()
+        new1 = open('database.txt','w')
+        new1.close()
+        new2 = open('database.txt','a')
+        for i in new:
+            i2 = i.replace("['","").replace("\\n', '", "\n").replace("']","").replace("\\n","\n")
+            new2.write(i2+'\n')
+        new2.close()
+    elif c.lower() == 'a':
+        i = open('database.txt','a')
+        P(" Tambah Data Bahan")
+        while (True):
+            nama = input(" Nama Bahan: ")
+            if nama == '':
+                P(' Masukan Nama Bahan')
+            else:
+                break
+        while (True):
+            try:
+                kode  = int(input(" Kode Bahan  : "))
+                if kode == '':
+                    P(' Masukan Kode dengan Angka')
+            except ValueError:
+                P(' Masukan Kode dengan Angka')                
+            else:
+                break
+        while (True):
+            try:
+                jumlah  = int(input(" Jumlah (Kg): "))
+                if jumlah == '':
+                    P(' Masukan Jumlah dengan Angka')
+            except ValueError:
+                P(' Masukan Jumlah dengan Angka')                
+            else:
+                break
+        while (True):
+            try:
+                harga  = int(input(" Harga per Kg: "))
+                if harga == '':
+                    P(' Masukan Harga dengan Angka')
+            except ValueError:
+                P(' Masukan Harga dengan Angka')                
+            else:
+                break
+        total = jumlah * harga
+        i.write('\nNama : '+nama+'|Nim : '+str(kode)+'|Tugas : '+str(jumlah)+'|UTS : '+str(harga)+'|UAS : '+str(total)+'\n')
+        i.close()
+        Oc("clear")
+    else:
+        P("Pilih menu yang tersedia")
