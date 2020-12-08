@@ -49,7 +49,8 @@ while True:
                l1 = l.replace('Nama Bahan : ','').replace('Kode : ','').replace('Jumlah : ','').replace('Harga : ','').replace('Total : ','')
                nama,kode,jumlah,harga,total = l1.strip().split('|')
 
-#Pengecekan kode(target) yang dimasukan sama dengan kode bahan yang ada di database
+# Pengecekan kode(target) yang dimasukan sama 
+# dengan kode bahan yang ada di database
                if int(kode) == int(target):
                    print("")
                    print('Berhasil Menghapus Data %s'%(target))
@@ -91,17 +92,19 @@ while True:
                l1 = l.replace('Nama Bahan : ','').replace('Kode : ','').replace('Jumlah : ','').replace('Harga : ','').replace('Total : ','')
                nama,kode,jumlah,harga,total = l1.strip().split('|')
 
-#Pengecekan kode(target) yang dimasukan sama dengan kode bahan yang ada di database
+# Pengecekan kode(target) yang dimasukan sama 
+# dengan kode bahan yang ada di database
                if int(kode) == int(target):
                    print("")
                    print(' Mengedit Data %s'%(target))
                    print("")
 
-#Perulangan data yang akan diubah
+# Perulangan data yang akan diubah
                    while (True):
                        nama = input(" Nama Bahan: ")
 
-#Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai data yang dimasukan benar
+# Validasi inputan, jika data kosong program tidak akan dilanjutkan 
+# sampai data yang dimasukan benar
                        if nama == '':
                            print(' Masukan Nama Bahan')
                        else:
@@ -110,7 +113,8 @@ while True:
                        try:
                            jumlah  = int(input(" Jumlah (Kg): "))
 
-#Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai data yang dimasukan benar
+# Validasi inputan, jika data kosong program tidak akan dilanjutkan 
+# sampai data yang dimasukan benar
                            if jumlah == '':
                                print(' Masukan Jumlah dengan Angka')
                        except ValueError:
@@ -121,7 +125,8 @@ while True:
                        try:
                            harga  = int(input(" Harga per Kg: "))
 
-#Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai data yang dimasukan benar
+# Validasi inputan, jika data kosong program tidak akan dilanjutkan 
+# sampai data yang dimasukan benar
                            if harga == '':
                                print(' Masukan Harga dengan Angka')
                        except ValueError:
@@ -129,15 +134,19 @@ while True:
                        else:
                            break
 
-#Mengitung total harga bahan yang akan ditampilkan di tabel
+# Mengitung total harga bahan yang akan ditampilkan di tabel
                    total = jumlah * harga
 
-#Perintah untuk mengisi detail baru untuk data bahan yang dipilih
+# Perintah untuk mengisi detail baru untuk data bahan yang dipilih
                    edit  =('\nNama Bahan : '+nama+'|Kode : '+str(kode)+'|Jumlah : '+str(jumlah)+'|Harga : '+str(harga)+'|Total : '+str(total)+'\n')
 
-#Kemudian detail baru tersebut akan disimpan di variable list kosong yang sudah disiapkan
+# Kemudian detail baru tersebut akan disimpan di variable list kosong 
+# yang sudah disiapkan
                    nm.append(edit+'\n')
-               else:     
+               else:
+            
+# Jika detail baru yang dimasukkan tidak sesuai maka variabel 'nm' 
+# akan di isi dengan data sebelumnya
                    nm.append(str(l)+'\n')
 
 #Membaca file database.txt dan hapus data yang dipilih
@@ -167,7 +176,8 @@ while True:
        while (True):
            nama = input(" Nama Bahan: ")
 
-#Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai data yang dimasukan benar
+# Validasi inputan, jika data kosong program tidak akan dilanjutkan 
+# sampai data yang dimasukan benar
            if nama == '':
                print(' Masukan Nama Bahan')
            else:
@@ -176,7 +186,8 @@ while True:
            try:
                kode  = int(input(" Kode Bahan  : "))
 
-#Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai data yang dimasukan benar
+# Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai 
+# data yang dimasukan benar
                if kode == '':
                    print(' Masukan Kode dengan Angka')
            except ValueError:
@@ -187,7 +198,8 @@ while True:
            try:
                jumlah  = int(input(" Jumlah (Kg): "))
 
-#Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai data yang dimasukan benar
+# Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai 
+# data yang dimasukan benar
                if jumlah == '':
                    print(' Masukan Jumlah dengan Angka')
            except ValueError:
@@ -198,7 +210,8 @@ while True:
            try:
                harga  = int(input(" Harga per Kg: "))
 
-#Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai data yang dimasukan benar
+# Validasi inputan, jika data kosong program tidak akan dilanjutkan sampai 
+# data yang dimasukan benar
                if harga == '':
                    print(' Masukan Harga dengan Angka')
            except ValueError:
