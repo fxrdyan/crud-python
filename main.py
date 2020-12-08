@@ -9,7 +9,11 @@ while True:
 
 #-----Tampil Data-----#
    elif menu == 1:
+
+#Membuka file txt untuk mengecek data
        i = open('database.txt','r').read().splitlines()
+
+#Membuat Table untuk menampilkan data
        print(" ╔══════════════════════════════════════════════════════════════════════════╗")
        print(" ╠══════════════════════════════   LIST BAHAN   ════════════════════════════╣")
        print(" ╠══════════════════╦══════════════════╦════════════╦═══════════╦═══════════╣")
@@ -124,8 +128,14 @@ while True:
                            print(' Masukan Harga dengan Angka')               
                        else:
                            break
+
+#Mengitung total harga bahan yang akan ditampilkan di tabel
                    total = jumlah * harga
+
+#Perintah untuk mengisi detail baru untuk data bahan yang dipilih
                    edit  =('\nNama Bahan : '+nama+'|Kode : '+str(kode)+'|Jumlah : '+str(jumlah)+'|Harga : '+str(harga)+'|Total : '+str(total)+'\n')
+
+#Kemudian detail baru tersebut akan disimpan di variable list kosong yang sudah disiapkan
                    nm.append(edit+'\n')
                else:     
                    nm.append(str(l)+'\n')
@@ -153,7 +163,6 @@ while True:
        print("")
        print(" Tambah Data Bahan")
        print("")
-
 
        while (True):
            nama = input(" Nama Bahan: ")
@@ -197,7 +206,7 @@ while True:
            else:
                break
 
-#Mengitung total harga bahan yang akan ditampilkan di table
+#Mengitung total harga bahan yang akan ditampilkan di tabel
        total = jumlah * harga
        i.write('\nNama Bahan : '+nama+'|Kode : '+str(kode)+'|Jumlah : '+str(jumlah)+'|Harga : '+str(harga)+'|Total : '+str(total)+'\n')
        i.close()
