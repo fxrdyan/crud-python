@@ -10,17 +10,17 @@ while True:
 #-----Tampil Data-----#
    elif menu == 1:
 
-#Membuka file txt untuk mengecek data
+# Membuka file txt untuk mengecek data
        i = open('database.txt','r').read().splitlines()
 
-#Membuat Table untuk menampilkan data
+# Membuat Table untuk menampilkan data
        print(" ╔══════════════════════════════════════════════════════════════════════════╗")
        print(" ╠══════════════════════════════   LIST BAHAN   ════════════════════════════╣")
        print(" ╠══════════════════╦══════════════════╦════════════╦═══════════╦═══════════╣")
        print(" ║      NAMA        ║    KODE BAHAN    ║   JUMLAH   ║   HARGA   ║   TOTAL   ║")
        print(" ╠══════════════════╬══════════════════╬════════════╬═══════════╬═══════════╣")
 
-#Perulangan Menampilkan Data
+# Perulangan Menampilkan Data
        for l in i:
            if l == '':
                pass
@@ -33,15 +33,15 @@ while True:
 #-----Hapus Data-----#
    elif menu == 4:
 
-#Membuka file txt untuk mengecek data
+# Membuka file txt untuk mengecek data
        u = open('database.txt','r').read().splitlines()
        print("")
 
-#Memasukan Kode Bahan yang akan dihapus
+# Memasukan Kode Bahan yang akan dihapus
        target = int(input(' Masukan Kode : '))
        nm = []
 
-#Perulangan untuk mengecek data yang akan dihapus 
+# Perulangan untuk mengecek data yang akan dihapus 
        for l in u:
            if l == '':
                pass
@@ -58,7 +58,7 @@ while True:
                else:     
                    nm.append(str(l)+'\n')
 
-#Membaca file database.txt dan hapus data yang dipilih
+# Membaca file database.txt dan hapus data yang dipilih
        new = open('database.txt','w')       
        new.write(str(nm))
        new.close()
@@ -67,7 +67,7 @@ while True:
        new1.close()
        new2 = open('database.txt','a')
 
-#Mengganti data yang dihapus dengan element kosong
+# Mengganti data yang dihapus dengan element kosong
        for i in new:
            i2 = i.replace("['","").replace("\\n', '", "\n").replace("']","").replace("\\n",'')
            new2.write(i2)
@@ -76,15 +76,15 @@ while True:
 #-----Ubah Data-----#
    elif menu == 3:
 
-#Membuka file txt untuk mengecek data
+# Membuka file txt untuk mengecek data
        u = open('database.txt','r').read().splitlines()
        print("")
 
-#Memasukan Kode Bahan yang akan diubah
+# Memasukan Kode Bahan yang akan diubah
        target = int(input(' Masukan Kode : '))
        nm = []
 
-#Perulangan untuk mengecek data yang akan diubah 
+# Perulangan untuk mengecek data yang akan diubah 
        for l in u:
            if l == '':
                pass
@@ -149,7 +149,7 @@ while True:
 # akan di isi dengan data sebelumnya
                    nm.append(str(l)+'\n')
 
-#Membaca file database.txt dan hapus data yang dipilih
+# Membaca file database.txt dan hapus data yang dipilih
        new = open('database.txt','w')       
        new.write(str(nm))
        new.close()
@@ -158,16 +158,16 @@ while True:
        new1.close()
        new2 = open('database.txt','a')
 
-#Kode bagian ini sama dengan bagian di atas
+# Kode bagian ini sama dengan bagian di atas
        for i in new:
            i2 = i.replace("['","").replace("\\n', '", "\n").replace("']","").replace("\\n","\n")
            new2.write(i2+'\n')
        new2.close()
 
-#Tambah Data
+# Tambah Data
    elif menu == 2:
 
-#Membuka file txt untuk mengecek data
+# Membuka file txt untuk mengecek data
        i = open('database.txt','a')
        print("")
        print(" Tambah Data Bahan")
@@ -219,7 +219,7 @@ while True:
            else:
                break
 
-#Mengitung total harga bahan yang akan ditampilkan di tabel
+# Mengitung total harga bahan yang akan ditampilkan di tabel
        total = jumlah * harga
        i.write('\nNama Bahan : '+nama+'|Kode : '+str(kode)+'|Jumlah : '+str(jumlah)+'|Harga : '+str(harga)+'|Total : '+str(total)+'\n')
        i.close()
